@@ -58,6 +58,18 @@ public class MarkupSegmentationTest {
             }
         };
 
+        List<Segment> resultForNotClosedSegment = new ArrayList<Segment>() {
+            {
+                add(new Segment("<ABC>", FALSE));
+            }
+        };
+
+        List<Segment> resultForNotOpenedSegment = new ArrayList<Segment>() {
+            {
+                add(new Segment("</ABC>", FALSE));
+            }
+        };
+
         List<Segment> resultForDiverseMarkup = new ArrayList<Segment>() {
             {
                 add(new Segment("<ABC>Ala</ABC>", FALSE));
