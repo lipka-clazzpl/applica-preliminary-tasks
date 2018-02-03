@@ -46,9 +46,21 @@ public class MarkupSegmentationTest {
             }
         };
 
+        List<Segment> resultForSingleSegmentNotInTag = new ArrayList<Segment>() {
+            {
+                add(new Segment(" ma ", FALSE));
+            }
+        };
+
+        List<Segment> resultForSingleSegmentInTag = new ArrayList<Segment>() {
+            {
+                add(new Segment("<ABC> a</ABC>", TRUE));
+            }
+        };
+
         List<Segment> resultForDiverseMarkup = new ArrayList<Segment>() {
             {
-                add(new Segment("<ABC>Ala</ABC>",FALSE));
+                add(new Segment("<ABC>Ala</ABC>", FALSE));
                 add(new Segment(" ma ",FALSE));
                 add(new Segment("<ABC> kota<ABC> a</ABC> kot </ABC>",TRUE));
                 add(new Segment(" ma Ale",FALSE));
@@ -57,6 +69,8 @@ public class MarkupSegmentationTest {
 
         Object[][] data = new Object[][] {
                 { "" , resultForEmptyMarkup },
+                { "<ABC> a</ABC>", resultForSingleSegmentInTag},
+                { " ma ", resultForSingleSegmentNotInTag},
                 { "<ABC>Ala</ABC> ma <ABC> kota<ABC> a</ABC> kot </ABC> ma Ale" , resultForDiverseMarkup }
         };
 
@@ -67,6 +81,6 @@ public class MarkupSegmentationTest {
     public void shouldProvideSegments() {
         MarkupSegmentation ms = new MarkupSegmentation();
 
-        assertEquals(String.format("Segments differ for markup %s", markup), segments, ms.separate(markup));
+        assertEquals(String.format("Segments differ for markup '%s'", markup), segments, ms.separate(markup));
     }
 }
