@@ -20,6 +20,11 @@ public class MarkupSegmentation {
             };
         }
 
+        // Assuming UTF-16 code points in BMP (https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane)
+        // Assuming short strings that fit (otherwise StringBuffer/StringBuilder would be used)
+        // Assuming there is no check made for non-conforming markup, ie. not opened or closed, see test cases
+
+
         return null;
     }
 
