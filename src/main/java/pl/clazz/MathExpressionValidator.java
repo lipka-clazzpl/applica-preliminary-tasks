@@ -13,6 +13,7 @@ public class MathExpressionValidator {
      * String without parentheses present should yield true as a result.
      * Assumes input string unicode code point might be outside U+0000 : U+FFFF range - typical for
      * math expressions ie. U+1D70B https://unicode-table.com/en/1D70B/
+     * Implementation won't perform full parsing of the input.
      *
      * @param expression String to be checked
      * @return Boolean.TRUE if properly balanced, Boolean.FALSE otherwise
