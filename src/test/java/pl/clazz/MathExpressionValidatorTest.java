@@ -38,7 +38,8 @@ public class MathExpressionValidatorTest {
                 { "(2 + 4) * 4" , Boolean.TRUE },
                 { "(4 * 4 - (log20 / 5)", Boolean.FALSE },
                 { "3 - (5 * 2))", Boolean.FALSE },
-                { "3 + 2x * 5", Boolean.TRUE }
+                { "3 + 2x * 5", Boolean.TRUE },
+                { "", Boolean.TRUE}
         };
 
         return Arrays.asList(data);
@@ -48,6 +49,6 @@ public class MathExpressionValidatorTest {
     public void shouldProvideResults() {
         MathExpressionValidator mev = new MathExpressionValidator();
 
-        assertEquals("Result", result, mev.validate(expression));
+        assertEquals(String.format("Result was not met for expression %s",expression), result, mev.validate(expression));
     }
 }
