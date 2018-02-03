@@ -2,6 +2,8 @@ group 'pl.clazz'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'antlr'
+
 
 sourceCompatibility = 1.8
 
@@ -11,4 +13,5 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    antlr "org.antlr:antlr:3.5.2"
 }
