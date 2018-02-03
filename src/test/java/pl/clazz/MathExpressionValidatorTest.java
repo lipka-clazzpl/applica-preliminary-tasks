@@ -11,7 +11,7 @@ public class MathExpressionValidatorTest {
     @Test
     public void shouldThrowExceptionOnMalformedInput() {
         exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Input parameter expression:String should not be null");
+        exception.expectMessage("First input parameter expression of type String should not be null");
 
         MathExpressionValidator mev = new MathExpressionValidator();
         mev.validate(null);
