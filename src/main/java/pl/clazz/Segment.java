@@ -44,4 +44,12 @@ class Segment {
         this.inTag = inTag;
     }
 
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "text='" + text + '\'' +
+                ", inTag=" + inTag +
+                '}';
+    }
 }
