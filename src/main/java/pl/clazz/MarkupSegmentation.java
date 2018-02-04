@@ -1,5 +1,15 @@
 package pl.clazz;
 
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import pl.clazz.grammar.ABCLexer;
+import pl.clazz.grammar.ABCParser;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +17,7 @@ import static java.lang.Boolean.FALSE;
 
 public class MarkupSegmentation {
 
-    List<Segment> separate(String text) {
+    List<Segment> separate(String text) throws IOException {
         if(text == null) {
             throw new IllegalArgumentException("First input parameter text of type String should not be null");
         }
@@ -20,12 +30,18 @@ public class MarkupSegmentation {
             };
         }
 
-        // Assuming UTF-16 code points in BMP (https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane)
-        // Assuming short strings that fit (otherwise StringBuffer/StringBuilder would be used)
-        // Assuming there is no check made for non-conforming markup, ie. not opened or closed, see test cases
+        InputStream stream = new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8));
 
+        ABCLexer lexer = new ABCLexer(CharStreams.fromStream(stream, StandardCharsets.UTF_8));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ABCParser parser = new ABCParser(tokens);
+        ParseTree tree = parser.text();
 
-        return null;
+        ABCVisitor visitor = new ABCVisitor();
+        visitor.visit(tree);
+
+        return visitor.getSegments();
+
     }
 
 }
