@@ -1,9 +1,5 @@
 lexer grammar ABCLexer;
 
-@header {
-package pl.clazz.grammar;
-}
-
 OPEN_PAREN : '<' -> pushMode(INSIDE) ;
 
 WS : [\t\r\n]+ -> skip ;
