@@ -30,13 +30,6 @@ public class ABCParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLvl0_elem(ABCParser.Lvl0_elemContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitLvl0_elem_chardata(ABCParser.Lvl0_elem_chardataContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

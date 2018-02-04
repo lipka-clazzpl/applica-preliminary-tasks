@@ -22,12 +22,6 @@ public interface ABCParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLvl0_chardata(ABCParser.Lvl0_chardataContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ABCParser#lvl0_elem}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLvl0_elem(ABCParser.Lvl0_elemContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link ABCParser#lvl0_elem_chardata}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
