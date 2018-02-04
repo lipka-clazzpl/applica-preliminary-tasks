@@ -73,9 +73,9 @@ public class MarkupSegmentationTest {
 
         List<Segment> resultForDiverseMarkup = new ArrayList<Segment>() {
             {
-                add(new Segment("<ABC>Ala</ABC>", FALSE));
-                add(new Segment(" ma ",FALSE));
+                add(new Segment("<ABC>Ala</ABC>", TRUE));
                 add(new Segment("<ABC> kota<ABC> a</ABC> kot </ABC>",TRUE));
+                add(new Segment(" ma ",FALSE));
                 add(new Segment(" ma Ale",FALSE));
             }
         };
