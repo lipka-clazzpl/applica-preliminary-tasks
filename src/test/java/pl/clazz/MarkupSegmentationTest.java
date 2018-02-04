@@ -6,6 +6,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,7 +25,7 @@ public class MarkupSegmentationTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void shouldThrowExceptionOnMalformedInput() {
+    public void shouldThrowExceptionOnMalformedInput() throws IOException {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage("First input parameter text of type String should not be null");
 
@@ -90,7 +91,7 @@ public class MarkupSegmentationTest {
     }
 
     @Test
-    public void shouldProvideSegments() {
+    public void shouldProvideSegments() throws IOException {
         MarkupSegmentation ms = new MarkupSegmentation();
 
         assertEquals(String.format("Segments differ for markup '%s'", markup), segments, ms.separate(markup));
