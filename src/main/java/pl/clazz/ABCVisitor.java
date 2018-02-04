@@ -24,6 +24,15 @@ public class ABCVisitor extends ABCParserBaseVisitor {
         return super.visitLvl0_elem_chardata(ctx);
     }
 
+    @Override
+    public Object visitLvl0_chardata(ABCParser.Lvl0_chardataContext ctx) {
+        for(ABCParser.ChardataContext chardata : ctx.chardata() ) {
+            segments.add( new Segment(chardata.getText(), Boolean.FALSE));
+        }
+
+        return super.visitLvl0_chardata(ctx);
+    }
+
     public List<Segment> getSegments() {
         return segments;
     }
